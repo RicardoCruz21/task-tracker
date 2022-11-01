@@ -25,6 +25,38 @@ public class App {
                                                                      TASK_MENU_OPTION_MEETINGS,
                                                                      MENU_OPTION_RETURN_TO_MAIN };
 
+    private static final String EMPLOYEE_MENU_OPTION_ALL_EMPLOYEES = "Show all Employees";
+    private static final String EMPLOYEE_MENU_OPTION_EMPLOYEE_DETAILS = "Show Employee Details";
+    private static final String EMPLOYEE_MENU_OPTION_ADD_EMPLOYEE = "Add an Employee";
+    private static final String EMPLOYEE_MENU_OPTION_UPDATE_EMPLOYEE = "Update an Employee";
+    private static final String EMPLOYEE_MENU_OPTION_REMOVE_EMPLOYEE = "Remove an Employee";
+    private static final String EMPLOYEE_MENU_OPTION_PENDING_TASKS_FOR_EMPLOYEE = "List Pending Tasks for Employee";
+    private static final String EMPLOYEE_MENU_OPTION_TASKS_COMPLETED_BY_EMPLOYEE = "List Tasks Completed by Employee";
+    private static final String[] EMPLOYEE_MENU_OPTIONS = new String[] { EMPLOYEE_MENU_OPTION_ALL_EMPLOYEES,
+                                                                         EMPLOYEE_MENU_OPTION_EMPLOYEE_DETAILS,
+                                                                         EMPLOYEE_MENU_OPTION_ADD_EMPLOYEE,
+                                                                         EMPLOYEE_MENU_OPTION_UPDATE_EMPLOYEE,
+                                                                         EMPLOYEE_MENU_OPTION_REMOVE_EMPLOYEE,
+                                                                         EMPLOYEE_MENU_OPTION_PENDING_TASKS_FOR_EMPLOYEE,
+                                                                         EMPLOYEE_MENU_OPTION_TASKS_COMPLETED_BY_EMPLOYEE,
+                                                                         MENU_OPTION_RETURN_TO_MAIN };
+
+    private static final String CLIENT_MENU_OPTION_ALL_CLIENTS = "Show all Clients";
+    private static final String CLIENT_MENU_OPTION_CLIENT_DETAILS = "Show Client Details";
+    private static final String CLIENT_MENU_OPTION_ADD_CLIENT = "Add a Client";
+    private static final String CLIENT_MENU_OPTION_UPDATE_CLIENT = "Update a Client";
+    private static final String CLIENT_MENU_OPTION_REMOVE_CLIENT = "Remove a Client";
+    private static final String CLIENT_MENU_OPTION_PENDING_TASKS_FOR_CLIENT = "List Pending Tasks for Client";
+    private static final String CLIENT_MENU_OPTION_TASKS_COMPLETED_FOR_CLIENT = "List Tasks Completed for Client";
+    private static final String[] CLIENT_MENU_OPTIONS = new String[] { CLIENT_MENU_OPTION_ALL_CLIENTS,
+                                                                       CLIENT_MENU_OPTION_CLIENT_DETAILS,
+                                                                       CLIENT_MENU_OPTION_ADD_CLIENT,
+                                                                       CLIENT_MENU_OPTION_UPDATE_CLIENT,
+                                                                       CLIENT_MENU_OPTION_REMOVE_CLIENT,
+                                                                       CLIENT_MENU_OPTION_PENDING_TASKS_FOR_CLIENT,
+                                                                       CLIENT_MENU_OPTION_TASKS_COMPLETED_FOR_CLIENT,
+                                                                       MENU_OPTION_RETURN_TO_MAIN };
+
     private static final String MENU_OPTION_RETURN_TO_TASKS = "Return to Tasks Menu";
 
     private static final String ASSIGNMENT_MENU_OPTION_ALL_ASSIGNMENTS = "Show all Assignments";
@@ -47,6 +79,42 @@ public class App {
                                                                            ASSIGNMENT_MENU_OPTION_REMOVE_CLIENT_FROM_ASSIGNMENT,
                                                                            MENU_OPTION_RETURN_TO_TASKS };
 
+    private static final String APPOINTMENT_MENU_OPTION_ALL_APPOINTMENTS = "Show all Appointments";
+    private static final String APPOINTMENT_MENU_APPOINTMENT_DETAILS = "Show Appointment Details";
+    private static final String APPOINTMENT_MENU_ADD_APPOINTMENT = "Add an Appointment";
+    private static final String APPOINTMENT_MENU_UPDATE_APPOINTMENT = "Update an Appointment";
+    private static final String APPOINTMENT_MENU_COMPLETE_APPOINTMENT = "Complete an Appointment";
+    private static final String APPOINTMENT_MENU_OPTION_ASSIGN_EMPLOYEE_TO_APPOINTMENT = "Assign Employee to Appointment";
+    private static final String APPOINTMENT_MENU_OPTION_REMOVE_EMPLOYEE_FROM_APPOINTMENT = "Remove Employee from Appointment";
+    private static final String APPOINTMENT_MENU_OPTION_ADD_CLIENT_TO_APPOINTMENT = "Add Client to Appointment";
+    private static final String APPOINTMENT_MENU_OPTION_REMOVE_CLIENT_FROM_APPOINTMENT = "Remove Client from Appointment";
+    private static final String[] APPOINTMENT_MENU_OPTIONS = new String[] { APPOINTMENT_MENU_OPTION_ALL_APPOINTMENTS,
+                                                                            APPOINTMENT_MENU_APPOINTMENT_DETAILS,
+                                                                            APPOINTMENT_MENU_ADD_APPOINTMENT,
+                                                                            APPOINTMENT_MENU_UPDATE_APPOINTMENT,
+                                                                            APPOINTMENT_MENU_COMPLETE_APPOINTMENT,
+                                                                            APPOINTMENT_MENU_OPTION_ASSIGN_EMPLOYEE_TO_APPOINTMENT,
+                                                                            APPOINTMENT_MENU_OPTION_REMOVE_EMPLOYEE_FROM_APPOINTMENT,
+                                                                            APPOINTMENT_MENU_OPTION_ADD_CLIENT_TO_APPOINTMENT,
+                                                                            APPOINTMENT_MENU_OPTION_REMOVE_CLIENT_FROM_APPOINTMENT,
+                                                                            MENU_OPTION_RETURN_TO_TASKS };
+
+    private static final String MEETING_MENU_OPTION_ALL_MEETINGS = "Show all Meetings";
+    private static final String MEETING_MENU_MEETING_DETAILS = "Show Meeting Details";
+    private static final String MEETING_MENU_ADD_MEETING = "Add a Meeting";
+    private static final String MEETING_MENU_UPDATE_MEETING = "Update a Meeting";
+    private static final String MEETING_MENU_COMPLETE_MEETING = "Complete a Meeting";
+    private static final String MEETING_MENU_OPTION_ASSIGN_EMPLOYEE_TO_MEETING = "Assign Employee to Meeting";
+    private static final String MEETING_MENU_OPTION_REMOVE_EMPLOYEE_FROM_MEETING = "Remove Employee from Meeting";
+    private static final String[] MEETING_MENU_OPTIONS = new String[] { MEETING_MENU_OPTION_ALL_MEETINGS,
+                                                                        MEETING_MENU_MEETING_DETAILS,
+                                                                        MEETING_MENU_ADD_MEETING,
+                                                                        MEETING_MENU_UPDATE_MEETING,
+                                                                        MEETING_MENU_COMPLETE_MEETING,
+                                                                        MEETING_MENU_OPTION_ASSIGN_EMPLOYEE_TO_MEETING,
+                                                                        MEETING_MENU_OPTION_REMOVE_EMPLOYEE_FROM_MEETING,
+                                                                        MENU_OPTION_RETURN_TO_TASKS };
+
 
     private final ConsoleService consoleService;
 
@@ -67,9 +135,9 @@ public class App {
             if (choice.equals(MAIN_MENU_OPTION_TASKS)){
                 handleTasks();
             } else if (choice.equals(MAIN_MENU_OPTION_EMPLOYEES)) {
-                System.out.println("You selected Employees!");
+                handleEmployees();
             } else if (choice.equals(MAIN_MENU_OPTION_CLIENTS)) {
-                System.out.println("You selected Clients!");
+                handleClients();
             } else if (choice.equals(MAIN_MENU_OPTION_EXIT)) {
                 System.out.println("Goodbye!");
                 running = false;
@@ -87,9 +155,61 @@ public class App {
             } else if (choice.equals(TASK_MENU_OPTION_ASSIGNMENTS)) {
                 handleAssignments();
             } else if (choice.equals(TASK_MENU_OPTION_APPOINTMENTS)) {
-                System.out.println("You selected Appointments!");
+                handleAppointments();
             } else if (choice.equals(TASK_MENU_OPTION_MEETINGS)) {
-                System.out.println("You selected Meetings!");
+                handleMeetings();
+            } else if (choice.equals(MENU_OPTION_RETURN_TO_MAIN)) {
+                System.out.println("Returning to Main Menu!");
+                running = false;
+            }
+        }
+    }
+
+    private void handleEmployees() {
+        boolean running = true;
+        while(running) {
+            printHeading("Employees Menu");
+            String choice = (String) consoleService.getChoiceFromOptions(EMPLOYEE_MENU_OPTIONS);
+            if (choice.equals(EMPLOYEE_MENU_OPTION_ALL_EMPLOYEES)) {
+                System.out.println("Showing all Employees!");
+            } else if (choice.equals(EMPLOYEE_MENU_OPTION_EMPLOYEE_DETAILS)) {
+                System.out.println("Showing all Employees!");
+            } else if (choice.equals(EMPLOYEE_MENU_OPTION_ADD_EMPLOYEE)) {
+                System.out.println("Showing all Employees!");
+            } else if (choice.equals(EMPLOYEE_MENU_OPTION_UPDATE_EMPLOYEE)) {
+                System.out.println("Showing all Employees!");
+            } else if (choice.equals(EMPLOYEE_MENU_OPTION_REMOVE_EMPLOYEE)) {
+                System.out.println("Showing all Employees!");
+            } else if (choice.equals(EMPLOYEE_MENU_OPTION_PENDING_TASKS_FOR_EMPLOYEE)) {
+                System.out.println("Showing all Employees!");
+            } else if (choice.equals(EMPLOYEE_MENU_OPTION_TASKS_COMPLETED_BY_EMPLOYEE)) {
+                System.out.println("Showing all Employees!");
+            } else if (choice.equals(MENU_OPTION_RETURN_TO_MAIN)) {
+                System.out.println("Returning to Main Menu!");
+                running = false;
+            }
+        }
+    }
+
+    private void handleClients() {
+        boolean running = true;
+        while(running) {
+            printHeading("Clients Menu");
+            String choice = (String) consoleService.getChoiceFromOptions(CLIENT_MENU_OPTIONS);
+            if (choice.equals(CLIENT_MENU_OPTION_ALL_CLIENTS)) {
+                System.out.println("Showing all Clients!");
+            } else if (choice.equals(CLIENT_MENU_OPTION_CLIENT_DETAILS)) {
+                System.out.println("Showing all Clients!");
+            } else if (choice.equals(CLIENT_MENU_OPTION_ADD_CLIENT)) {
+                System.out.println("Showing all Clients!");
+            } else if (choice.equals(CLIENT_MENU_OPTION_UPDATE_CLIENT)) {
+                System.out.println("Showing all Clients!");
+            } else if (choice.equals(CLIENT_MENU_OPTION_REMOVE_CLIENT)) {
+                System.out.println("Showing all Clients!");
+            } else if (choice.equals(CLIENT_MENU_OPTION_PENDING_TASKS_FOR_CLIENT)) {
+                System.out.println("Showing all Clients!");
+            } else if (choice.equals(CLIENT_MENU_OPTION_TASKS_COMPLETED_FOR_CLIENT)) {
+                System.out.println("Showing all Clients!");
             } else if (choice.equals(MENU_OPTION_RETURN_TO_MAIN)) {
                 System.out.println("Returning to Main Menu!");
                 running = false;
@@ -120,6 +240,62 @@ public class App {
                 System.out.println("Adding Client to Assignment!");
             } else if (choice.equals(ASSIGNMENT_MENU_OPTION_REMOVE_CLIENT_FROM_ASSIGNMENT)) {
                 System.out.println("Removing Client from Assignment!");
+            } else if (choice.equals(MENU_OPTION_RETURN_TO_TASKS)) {
+                System.out.println("Returning to Tasks Menu!");
+                running = false;
+            }
+        }
+    }
+
+    private void handleAppointments() {
+        boolean running = true;
+        while(running) {
+            printHeading("Appointments Menu");
+            String choice = (String) consoleService.getChoiceFromOptions(APPOINTMENT_MENU_OPTIONS);
+            if (choice.equals(APPOINTMENT_MENU_OPTION_ALL_APPOINTMENTS)) {
+                System.out.println("Showing all Appointments!");
+            } else if (choice.equals(APPOINTMENT_MENU_APPOINTMENT_DETAILS)) {
+                System.out.println("Showing Appointment Details!");
+            } else if (choice.equals(APPOINTMENT_MENU_ADD_APPOINTMENT)) {
+                System.out.println("Adding new Appointment!");
+            } else if (choice.equals(APPOINTMENT_MENU_UPDATE_APPOINTMENT)) {
+                System.out.println("Updating Appointment!");
+            } else if (choice.equals(APPOINTMENT_MENU_COMPLETE_APPOINTMENT)) {
+                System.out.println("Completing Appointment!");
+            } else if (choice.equals(APPOINTMENT_MENU_OPTION_ASSIGN_EMPLOYEE_TO_APPOINTMENT)) {
+                System.out.println("Assigning Employee to Appointment!");
+            } else if (choice.equals(APPOINTMENT_MENU_OPTION_REMOVE_EMPLOYEE_FROM_APPOINTMENT)) {
+                System.out.println("Removing Employee from Appointment!");
+            } else if (choice.equals(APPOINTMENT_MENU_OPTION_ADD_CLIENT_TO_APPOINTMENT)) {
+                System.out.println("Adding Client to Appointment!");
+            } else if (choice.equals(APPOINTMENT_MENU_OPTION_REMOVE_CLIENT_FROM_APPOINTMENT)) {
+                System.out.println("Removing Client from Appointment!");
+            } else if (choice.equals(MENU_OPTION_RETURN_TO_TASKS)) {
+                System.out.println("Returning to Tasks Menu!");
+                running = false;
+            }
+        }
+    }
+
+    private void handleMeetings() {
+        boolean running = true;
+        while(running) {
+            printHeading("Appointments Menu");
+            String choice = (String) consoleService.getChoiceFromOptions(MEETING_MENU_OPTIONS);
+            if (choice.equals(MEETING_MENU_OPTION_ALL_MEETINGS)) {
+                System.out.println("Showing all Appointments!");
+            } else if (choice.equals(MEETING_MENU_MEETING_DETAILS)) {
+                System.out.println("Showing Appointment Details!");
+            } else if (choice.equals(MEETING_MENU_ADD_MEETING)) {
+                System.out.println("Adding new Appointment!");
+            } else if (choice.equals(MEETING_MENU_UPDATE_MEETING)) {
+                System.out.println("Updating Appointment!");
+            } else if (choice.equals(MEETING_MENU_COMPLETE_MEETING)) {
+                System.out.println("Completing Appointment!");
+            } else if (choice.equals(MEETING_MENU_OPTION_ASSIGN_EMPLOYEE_TO_MEETING)) {
+                System.out.println("Assigning Employee to Appointment!");
+            } else if (choice.equals(MEETING_MENU_OPTION_REMOVE_EMPLOYEE_FROM_MEETING)) {
+                System.out.println("Removing Employee from Appointment!");
             } else if (choice.equals(MENU_OPTION_RETURN_TO_TASKS)) {
                 System.out.println("Returning to Tasks Menu!");
                 running = false;
