@@ -1,6 +1,10 @@
 package org.tasktracker.tasks;
 
+import org.apache.commons.dbcp2.BasicDataSource;
+import org.tasktracker.tasks.dao.*;
 import org.tasktracker.tasks.services.ConsoleService;
+
+import javax.sql.DataSource;
 
 public class App {
 
@@ -117,14 +121,32 @@ public class App {
 
 
     private final ConsoleService consoleService;
+    private final AppointmentDao appointmentDao;
+    private final AssignmentDao assignmentDao;
+    private final ClientDao clientDao;
+    private final EmployeeDao employeeDao;
+    private final MeetingDao meetingDao;
+    private final TaskDao taskDao;
 
     public static void main(String[] args) {
-        App app = new App();
+        BasicDataSource dataSource = new BasicDataSource();
+        dataSource.setUrl("jdbc:postgresql://localhost:5432/TaskTrackerDB");
+        dataSource.setUsername("postgres");
+        dataSource.setPassword("postgres1");
+
+        App app = new App(dataSource);
         app.run();
     }
 
-    public App() {
+    public App(DataSource dataSource) {
         this.consoleService = new ConsoleService();
+
+        this.appointmentDao = new JdbcAppointmentDao(dataSource);
+        this.assignmentDao = new JdbcAssignmentDao(dataSource);
+        this.clientDao = new JdbcClientDao(dataSource);
+        this.employeeDao = new JdbcEmployeeDao(dataSource);
+        this.meetingDao = new JdbcMeetingDao(dataSource);
+        this.taskDao = new JdbcTaskDao(dataSource);
     }
 
     private void run() {

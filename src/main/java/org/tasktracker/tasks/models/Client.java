@@ -4,11 +4,14 @@ public class Client {
 
     private int clientId;
     private String clientName;
-    private String phoneNumber;
-    private String emailAddress;
+    private String phoneNumber = null;
+    private String emailAddress = null;
 
     public int getClientId() {
         return clientId;
+    }
+    public void setClientId(int clientId) {
+        this.clientId = clientId;
     }
 
     public String getClientName() {

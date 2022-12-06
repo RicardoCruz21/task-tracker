@@ -12,6 +12,8 @@ public class Employee {
         return employeeId;
     }
 
+    public void setEmployeeId(int employeeId) { this.employeeId = employeeId; }
+
     public String getFirstName() {
         return firstName;
     }
@@ -42,5 +44,10 @@ public class Employee {
 
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
+    }
+
+    @Override
+    public String toString() {
+        return getLastName() + ", " + getFirstName();
     }
 }

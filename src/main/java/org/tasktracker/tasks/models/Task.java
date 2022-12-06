@@ -1,5 +1,6 @@
 package org.tasktracker.tasks.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Task implements Assignable {
@@ -13,7 +14,7 @@ public class Task implements Assignable {
     private String taskStatus;
     private String taskType;
     private Client client;
-    private List<Employee> employees;
+    private List<Employee> employees = new ArrayList<>();
 
     public int getTaskId() {
         return taskId;
